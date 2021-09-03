@@ -1,0 +1,179 @@
+{% extends "../index.html" %}
+{% block content %}
+{% load static %}
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+      <div class="content-header" >
+         <div class="container-fluid">
+            <div class="row mb-2">
+               <div class="col-sm-6">
+                  <h1 style="color: black" class="m-0">Detalle de facturas</h1>
+               </div>
+               <!-- /.col -->
+               <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                     <li class="breadcrumb-item"><a href="mantenedores">Inicio</a></li>
+                     <li class="breadcrumb-item active">Facturas</li>
+                  </ol>
+               </div>
+               <!-- /.col -->
+            </div>
+            <!-- /.row -->
+         </div>
+      </div>
+      <!-- /.container-fluid -->
+   </section>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="card mb-3">
+            <div class="card-body">
+               <form class="needs-validation" novalidate>
+                  <div class="form-row">
+                     <!-- title row -->
+                     <div class="col-xs-12">
+                        <h2 class="page-header">
+                           <i class="fa fa-globe"></i> DETALLES DE FACTURACIÓN
+                           <small class="pull-right">FECHA: 02/10/2021</small>
+                        </h2>
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  <!-- info row -->
+                  <div class="row invoice-info">
+                     <div class="col-sm-4 invoice-col">
+                        De
+                        <address>
+                           <strong>Ferme S.A</strong><br>
+                           San Bernardo 8172<br>
+                           Santiago Región Metropolitana<br>
+                           Teléfono: +569 81290121<br>
+                           Email: consultas@ferme.cl
+                        </address>
+                     </div>
+                     <!-- /.col -->
+                     <div class="col-sm-4 invoice-col">
+                        Para
+                        <address>
+                           <strong>John Doe</strong><br>
+                           Avenida central 8172<br>
+                           Santiago Región metropolitana<br>
+                           Teléfono: +569 81110221<br>
+                           Email: john.doe@gmail.com
+                        </address>
+                     </div>
+                     <!-- /.col -->
+                     <div class="col-sm-4 invoice-col">
+                        <b>Folio #007612</b><br>
+                        <br>
+                        <b>Orden ID:</b> 4F3S8J<br>
+                        <b>Pagado:</b> 2/22/2021<br>
+                        <b>Cuenta:</b> 968-34567
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                  <!-- Table row -->
+                  <div class="row">
+                     <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                           <thead>
+                              <tr>
+                                 <th>Cantidad</th>
+                                 <th>Producto</th>
+                                 <th>Serial #</th>
+                                 <th>Descripción</th>
+                                 <th>Subtotal</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1</td>
+                                 <td>Taladro Electrico</td>
+                                 <td>455-981-221</td>
+                                 <td>Taladro marca baucker</td>
+                                 <td>$64.500</td>
+                              </tr>
+                              <tr>
+                                 <td>1</td>
+                                 <td>Lija de madera</td>
+                                 <td>247-925-726</td>
+                                 <td>Lija para madera</td>
+                                 <td>$150</td>
+                              </tr>
+                              <tr>
+                                 <td>1</td>
+                                 <td>Sierra electrica</td>
+                                 <td>735-845-642</td>
+                                 <td>Sierra marca makita</td>
+                                 <td>$110.100</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                  <div class="form-column">
+                     <div class="row" >
+                        <!-- accepted payments column -->
+                        <!--   <div class="col-xs-6">
+                           <p class="lead">METODOS DE PAGO</p>
+                           <img src="/static/FrWork/AdminLTE/dist/img/credit/visa.png" alt="Visa">
+                           <img src="/static/FrWork/AdminLTE/dist/img/credit/mastercard.png" alt="Mastercard">
+                           <img src="/static/FrWork/AdminLTE/dist/img/credit/american-express.png" alt="American Express">
+                           <img src="/static/FrWork/AdminLTE/dist/img/credit/paypal2.png" alt="Paypal">
+                           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                              S
+                           </p><div class="form-row"><div class="row" >
+                           
+                           </div><div class="form-row">
+                           /.col -->
+                        <p class="lead">Emitida en 2/22/2014</p>
+                        <div class="table-responsive">
+                           <table class="table">
+                              <tr>
+                                 <th style="width:50%">Subtotal:</th>
+                                 <td>$250.300</td>
+                              </tr>
+                              <tr>
+                                 <th>Iva inc (19%)</th>
+                                 <td>$10.340</td>
+                              </tr>
+                              <tr>
+                                 <th>Neto:</th>
+                                 <td>$5.800</td>
+                              </tr>
+                              <tr>
+                                 <th>Total:</th>
+                                 <td>$265.240</td>
+                              </tr>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                  <!-- this row will not appear when printing -->
+                  <div class="col text-center">
+                     <div class="col-xs-12">
+                        <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
+                        <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Procesar pago
+                        </button>
+                        <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                        <i class="fa fa-download"></i> GENERAR PDF
+                        </button>
+                        <button type="button" class="btn btn-danger" style="margin-right: 5px;">
+                        <i class="fa fa-globe"></i> ANULAR FACTURA
+                        </button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+
+
+{% endblock %}

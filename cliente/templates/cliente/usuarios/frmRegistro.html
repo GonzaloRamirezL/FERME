@@ -1,0 +1,127 @@
+{% extends 'cliente/indexCliente.html' %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="containerRight">
+<div id="breadcrumb" class="section">
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Registrar</h3>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+		</div>
+			<!-- /container -->
+		
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div id="breadcrumb" class="section">
+		<section class="content">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+						<div class="col-md-6">
+							<form method="post">{% csrf_token %}
+
+                            <div class="form-group">
+                                 {{ form.as_p }}  
+                            </div>
+
+                            <div class="form-group">
+                                <div class="product-btns">
+                                    <button><a class="primary-btn cta-btn" type="submit">Registrarte!</a></button>
+                             </div>
+                            </div>
+
+                        </form>
+						<!-- Billing Details -->
+						<!--<form id="frmClientes" method="post">{% csrf_token %}>
+							<div class="form-group">
+								<label for="txtNombreUser">
+										<span></span>
+										Nombres
+									</label>
+								<input class="input" type="text" id="txtNombreUser" name="txtNombreUser" placeholder="Nombres">
+							</div>
+							<div class="form-group">
+								<label for="txtApellidoUser">
+										<span></span>
+										Apellidos
+									</label>
+								<input class="input" type="txtApellidoUser" id="txt" name="txtApellidoUser" placeholder="Apellidos">
+							</div>
+							<div class="form-group">
+								<label for="txtEmailUser">
+										<span></span>
+										Correo
+									</label>
+								<input class="input" type="email" id="txtEmailUser" name="username" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="txtEmailUser2">
+										<span></span>
+										Repita Correo
+									</label>
+								<input class="input" type="email" id="txtEmailUser2" name="txtEmailUser2" placeholder="repita Email">
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="txtPasswordUser">
+										<span></span>
+										Ingrese una contraseña
+									</label>
+									<input class="input" type="password" id="txtPasswordUser" name="password" placeholder="Ingrese una contraseña">
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="txtPasswordUser2">
+										<span></span>
+										Repita contraseña
+									</label>
+									<input class="input" type="password" id="txtPasswordUser2" name="txtPasswordUser2" placeholder="repita contraseña">
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+									<input type="checkbox" id="chbSanBernardo" name="chbSanBernardo">
+									<label for="create-account">
+										<span></span>
+										¿Vive en la comuna de San Bernardo?
+									</label>
+									
+									<div class="caption">
+										<label for="txtDireccion">
+										<span></span>
+										Indique su dirección
+										</label>
+										<input class="input" type="text" id="txtDireccion" name="txtDireccion" placeholder="Dirección">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="product-btns">
+                      				<a class="primary-btn cta-btn" id="btnRegistrarCliente">Registrarte!</a>
+                   			 </div>
+							</div>
+
+						</form>-->
+					</div>
+				</div>
+	
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</section>
+		</div>
+		<!-- /SECTION -->
+</div>
+{% endblock %}

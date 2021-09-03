@@ -1,0 +1,109 @@
+<section>
+  <div id="containerRight">
+     <section class="content">
+      <div class="row">
+       <div class="col-xs-12">
+        <div class="box">
+           <div class="box-header">
+            <table id="tblTitulo1" class="table1" width="100%" border="0">
+             <tbody>
+              <tr>
+                 <td>
+                  <h1 class="box-title"><font size="10"><b>&nbsp;&nbsp;&nbsp;Listado de Personas</b></font></h1>
+                 </td>
+                 <td align="right">
+                  <a href="crear" type="button" class="btn btn-primary">Crear</a>
+                 </td>
+              </tr>
+             </tbody>
+            </table>
+            <hr>
+            <div class="portlet-body">
+             <div class="container_table box-title1 table-responsive">
+              <div id="tblData_wrapper" class="dataTables_wrapper no-footer">
+                 <div id="tblData_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tblData"></label></div>
+                 
+                  <div class="dataTables_scrollBody">
+                   <table id="tblData" class="table table-responsive table-striped table-bordered tablehead table-hover table-condensed dataTable no-footer" role="grid" aria-describedby="tblData_info">
+                    <thead>
+                       <tr class="colhead" role="row">
+                    
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">RUN</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Nombre</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Apellido Paterno</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Apellido Materno</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Fecha Nacimiento</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Dirección</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Id Región</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1">
+                         <div class="dataTables_sizing">Id Comuna</div>
+                        </th>
+                        <th class="sorting" aria-controls="tblData" rowspan="1" colspan="1" width="20%">
+                         <div class="dataTables_sizing"></div>
+                        </th>
+                       </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                    {% for filas in rowData %}
+                    <tr>
+                      <td>{{ filas.run }}-{{ filas.dv }}</td>
+                      <td>{{ filas.nombre}}</td>
+                      <td>{{ filas.ap_paterno}}</td>
+                      <td>{{ filas.ap_materno}}</td>
+                      <td>{{ filas.fecha_naci}}</td>
+                      <td>{{ filas.direccion}}</td>
+                      <td>{{ filas.comuna.region.nombre}}</td>
+                      <td>{{ filas.comuna.nombre}}</td>
+
+                      <td>
+                        
+                        <form method="POST" action="{{Persona.run}}">
+                          {% csrf_token %}
+                          
+                          <div class="btn-group">
+                            <a href="javascript:mpPersona.editar({{filas.run}})" title="Ver" type="button" class="btn btn-success">Ver </a>
+                            <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar
+                            </button>            
+                          </div>
+
+                        </form>
+
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                   </table>
+                  </div>
+                 </div>
+                 <div class="dataTables_info" id="tblData_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div>
+              </div>
+
+             </div>
+            </div>
+            <!-- /.box-header -->
+
+           </div>
+        </div>
+       </div>
+      </div>
+     </section>
+  </div>
+ </section>
+ 

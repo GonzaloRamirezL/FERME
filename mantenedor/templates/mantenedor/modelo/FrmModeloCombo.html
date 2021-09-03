@@ -1,0 +1,11 @@
+ 	<label class="col-sm-3 control-label" for="input01">Modelo</label>
+	<div class="col-sm-3">
+	  <select notnull=""  title="Imagen" 
+	            type="text" class="input-large required " 
+	            id="cbModelo" name="cbModelo" 
+	            style="width: 400px">
+	       {% for mod in regModelo %}
+	             <option value='{{mod.modelo_id}}'>{{mod.descripcion}}</option>
+	       {% endfor %}
+	  </select>
+	</div>

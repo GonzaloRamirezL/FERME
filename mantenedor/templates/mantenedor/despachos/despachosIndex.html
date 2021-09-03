@@ -1,0 +1,105 @@
+{% extends "../index.html" %}
+{% block content %}
+{% load static %}
+
+<!--Contenido HTML del listado de marcas-->
+<div class="content-wrapper">
+   <div class="container-fluid">
+      <section class="content-header">
+         <div class="col-12">
+            <div class="card">
+               <div class="col-sm-12">
+                  <h1 style="color: black" class="m-0">Listado de despachos</h1>
+               </div>
+               <div class="card-body">
+                  <table id="tablaDespachos" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Nro Despacho</th>
+                           <th>Fecha</th>
+                           <th>Correo</th>
+                           <th>Dirección</th>
+                           <th>Estado</th>
+                           <th>Acciones</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+         <!-- /.col -->
+      </section>
+   </div>
+</div>
+
+<!-- Modal de despachos-->
+<div class="modal fade" id="modalDespachos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="lblModalDespachoss"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form id="formu">
+               <div class="form-group">
+                  <label for="txtDireccionDespacho" class="col-form-label">Dirección:</label>
+                  <input type="text" class="form-control" id="txtDireccionDespacho" name="txtDireccionDespacho">
+               </div>
+               <div class="form-group">
+                  <label for="txtFechaEnvio" class="col-form-label">Fecha de envio:</label>
+                  <input type="date" class="form-control" id="txtFechaEnvio" name="txtFechaEnvio">
+               </div>
+               <div class="form-group">
+                  <label for="txtEstadoDespacho" class="col-form-label">Estado de envio:</label>
+               <select class="form-control" id="txtEstadoDespacho" name="txtEstadoDespacho">
+                  <option disabled selected="True">Seleccionar un estado</option>
+                     <option value="1">Pendiente</option>
+                     <option value="2">Confirmado</option>
+                     <option value="4">Recibido</option>
+               </select>
+            </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCerrarModalDespachos">Cancelar</button>
+            <button id="btnConfirmarDespacho" type="button" class="btn btn-primary">Confirmar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Modal de despachos-->
+<div class="modal fade" id="modalDespachosAnular" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="lblModalDespachosAnular"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form id="formu">
+               <div class="form-group">
+                  <label for="motivosAnular" class="col-form-label">Escriba los motivos:</label>
+                   <textarea class="form-control" name="motivosAnular" id="motivosAnular" rows="3"></textarea>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button id="btnAnularDespacho" type="button" class="btn btn-primary">Confirmar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+{% endblock %}
+

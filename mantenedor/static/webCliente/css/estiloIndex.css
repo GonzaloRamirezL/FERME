@@ -1,0 +1,33 @@
+.carousel-item {
+  height: 100px;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.card-img-top {
+  max-height: 210px;
+  min-height: 210px;
+}
+
+body {
+  background: #f2f2f2;
+}
+
+.display-4  {
+    color: white;
+    font-weight:bold;
+}
+
+.lead {
+    color: white;
+    font-weight:bold;
+}
+
+
+
+
+

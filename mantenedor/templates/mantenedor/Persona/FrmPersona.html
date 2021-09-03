@@ -1,0 +1,94 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <table id="tblTitulo1" class="table1" width="100%">
+                      <tr>
+                        <td>
+                          <h2><b>&nbsp;&nbsp;Persona</b></h2></td>
+                      </tr>
+                    </table>
+<hr>
+					<div class="container_table box-title table-responsive" style="width: 100%">
+					  <form class="form-horizontal well" id="forms-registro">
+						  <div class="form-group">
+   							  <label class="col-sm-3 control-label" for="input01">Run</label>
+   							  <div class="col-sm-3">
+   								  <input notnull="" title="run" type="text" class="input-large required " id="txtRun" name="txtRun" maxlength="10" value="{{regPersona.run}}">
+   							  </div>
+   						  </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input01">DV</label>
+                  <div class="col-sm-3">
+                    <input notnull="" title="dv" disabled type="text" class="input-large required " id="txtDv" name="txtDv" maxlength="10" value="{{regPersona.dv}}">
+                  </div>
+                </div>
+						  <div class="form-group">
+							  <label class="col-sm-3 control-label" for="input01">Nombre</label>
+							  <div class="col-sm-3">
+								  <input notnull="" title="nombre"  disabled type="text" class="input-large required " id="txtNombre" name="txtNombre" maxlength="100" value="{{regPersona.nombre}}">
+							  </div>
+						  </div>
+						 <div class="form-group">
+   							  <label class="col-sm-3 control-label" for="input01">Apellido Paterno</label>
+   							  <div class="col-sm-3">
+   								  <input notnull="" title="apPaterno" disabled type="text" class="input-large required " id="txtApePaterno" name="txtApePaterno" maxlength="100" value="{{regPersona.ap_paterno}}">
+   							  </div>
+   						  </div>
+   						  <div class="form-group">
+   							  <label class="col-sm-3 control-label" for="input01">Apellido Materno</label>
+   							  <div class="col-sm-3">
+   								  <input notnull="" title="apMaterno" disabled type="text" class="input-large required " id="txtApeMaterno" name="txtApeMaterno" maxlength="100" value="{{regPersona.ap_materno}}">
+   							  </div>
+   						  </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input01">Fecha de nacimiento</label>
+                  <div class="col-sm-3">
+                    <input type="text" disabled id="txtFecha" name="txtFecha" value="{{regPersona.fecha_naci}}" maxlength="100" class="input-large required ">
+                  </div>
+                </div>  
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="input01">Dirección</label>
+                  <div class="col-sm-3">
+                    <input notnull="" title="Valor" disabled type="direccion" class="input-large required " id="txtDireccion" name="txtDireccion" maxlength="100" value="{{regPersona.direccion}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                <label class="col-sm-3 control-label" for="input01">Región</label>
+                <div class="col-sm-3">
+                  <select notnull="" title="region" disabled id="cbRegion" name="cbRegion" class="form-combo" style="width: 350px;" onchange="mpComuna.loadCombo(document.getElementById('cbRegion').value)">
+                    {% for reg in regRegion %}
+                            <option value="{{reg.region_id}}">{{reg.nombre}}</option>
+                        {% endfor %} 
+                  </select>
+                </div>
+              </div>
+              <div class="form-group" id="selComuna">
+                <label class="col-sm-3 control-label" for="input01">Comuna</label>
+                <div class="col-sm-3">
+                  <select notnull="" title="comuna" disabled id="cbComuna" name="cbComuna" class="form-combo" style="width: 350px;">
+                    <option value="{{regPersona.comuna_id}}">{{regPersona.comuna.nombre}}</option>
+                    {% for reg in regComuna %}
+                            <option value="{{reg.comuna_id}}">{{reg.nombre}}</option>
+                    {% endfor %} 
+                  </select>
+                </div>
+              </div>
+   <!-- **************************************************************************-->
+						 <div class="form-actions">
+        <table width="100%" border="0"><tbody><tr><td width="100%" align="right">
+        <button type="button" disabled align="right" name="btGuardar" id="btGuardar" class="btn  btn-success" onclick="javascript:mpPersona.crear();"><i class="fa fa-floppy-save"></i> Guardar</button>
+        <button type="button" align="right" name="btLeer" id="btLeer" class="btn  btn-success" onclick="javascript:mpPersona.leer();"><i class="fa fa-floppy-save"></i> Leer</button>
+       <button type="button" disabled  name="btActualizar" id="btActualizar" align="right" class="btn  btn-success" onclick="javascript:mpPersona.actualizar();"><i class="fa fa-floppy-save"></i> Actualizar</button>
+       <button type="button" disabled  name="btEliminar" id="btEliminar" align="right" class="btn  btn-success" onclick="javascript:mpPersona.eliminar();"><i class="fa fa-floppy-save"></i> Eliminar</button>
+       <button type="button"   name="btListar" id="btListar" align="right" class="btn  btn-success" onclick="javascript:mpPersona.listar();"><i class="fa fa-floppy-save"></i> Listar</button>
+       <button align="right" disabled  name="btCancelar" id="btCancelar" class="btn btn-primary" name="commit" value="Cerrar" type="reset" onclick="javascript:mpPersona.cancelar()"><i class="fa fa-ok"> Cancelar</i></button>
+        </td></tr></tbody></table>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+

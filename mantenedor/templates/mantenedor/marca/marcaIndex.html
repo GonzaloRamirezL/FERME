@@ -1,0 +1,64 @@
+{% extends "../index.html" %}
+{% block content %}
+{% load static %}
+<!-- Modal de marcas-->
+<div class="modal fade" id="modalMarcas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="lblModalMarcas"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form id="formu">
+               <div class="form-group">
+                  <label for="txtNomMarca" class="col-form-label">Nombre Marca:</label>
+                  <span><small id="spNomMarca"></small></span>
+                  <input type="text" class="form-control" id="txtNomMarca" name="txtNomMarca">
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cerrarModalMarca">Cancelar</button>
+            <button id="btnIngresarMarca" type="button" class="btn btn-primary" hidden="true">Agregar</button>
+            <button id="btnModificarMarca" type="button" class="btn btn-primary" hidden="true">Guardar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!--Contenido HTML del listado de marcas-->
+<div class="content-wrapper">
+   <div class="container-fluid">
+      <section class="content-header">
+         <div class="col-12">
+            <div class="card">
+               <div class="col-sm-12">
+                  <h1 style="color: black" class="m-0">Listado de marcas</h1>
+                  <button type="button" class="btn btn-primary" id="btnAgregarMarca">Agregar Marca</button>
+               </div>
+               <div class="card-body">
+                  <table id="tablaMarcas" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Id marca</th>
+                           <th>Nombres</th>
+                           <th>Acciones</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+         <!-- /.col -->
+      </section>
+   </div>
+</div>
+{% endblock %}
+

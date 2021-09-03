@@ -1,0 +1,166 @@
+{% extends "../index.html" %}
+{% block content %}
+{% load static %}
+<!-- Modal de marcas-->
+<div class="modal fade" id="modalUsuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="lblFrmUsuarios"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form id="frmDatosUsuario">
+            <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtRutUsuario">Rut</label>
+                        <span><small id="spRutCLiente"></small></span>
+                        <input type="text" class="form-control" id="txtRutUsuario" name="txtRutUsuario" 
+                        placeholder="Rut usuario..." maxlength="10" oninput="checkRut(this)">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtNomUsuario">Nombres</label>
+                        <span><small id="spNombres"></small></span>
+                        <input type="text" class="form-control" id="txtNomUsuario" name="txtNomUsuario" placeholder="Nombres...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtPaternoUsuario">Apellido Paterno</label>
+                        <span><small id="spPaterno"></small></span>
+                        <input type="text" class="form-control" id="txtPaternoUsuario"  name="txtPaternoUsuario" placeholder="Apellido Paterno...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtMaternoUsuario">Apellido Materno</label>
+                        <span><small id="spMaterno"></small></span>
+                        <input type="text" class="form-control" id="txtMaternoUsuario" name="txtMaternoUsuario" placeholder="Apellido Materno...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtTelefono">Teléfono</label>
+                        <span><small id="spTelefono"></small></span>
+                        <input type="text" class="form-control" id="txtTelefono"  name="txtTelefono" placeholder="Teléfono...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtNomEmpresa">Empresa</label>
+                        <input type="text" class="form-control" id="txtNomEmpresa" name="txtNomEmpresa" placeholder="Empresa...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="idRegion">Región:</label>
+                        <span><small id="spRegion"></small></span>
+                        <select class="form-control" id="idRegion" name="idRegion">
+                          <option disabled selected>seleccione una región</option>  
+                          {% for i in region %}
+                          <option value="{{i.0}}">{{i.1}}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="idTipoUsusario">Tipo Usuario</label>
+                        <span><small id="spTipo"></small></span>
+                        <select class="form-control" id="idTipoUsusario" name="idTipoUsusario">
+                          <option disabled selected>tipo de usuario</option> 
+                          <option value="4">Cliente</option>
+                          <option value="2">Vendedor</option>
+                          <option value="3">Empleado</option>
+                        </select>   
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="idComuna">Comuna</label>
+                        <span><small id="spComuna"></small></span>
+                        <select class="form-control" id="idComuna" name="idComuna">                    
+                        </select>
+                    </div>  
+                    <div class="col-sm-6">
+                        <label for="txtEmail">Correo</label>
+                        <span><small id="spCorreo1"></small></span>
+                        <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email...">
+                    </div>        
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtNacimiento">Fecha Nacimiento</label>
+                        <span><small id="spFecha"></small></span>
+                        <input type="date" class="form-control" id="txtNacimiento" name="txtNacimiento">
+                    </div>  
+                    <div class="col-sm-6">
+                        <label for="txtDireccion">Dirección</label>
+                        <span><small id="spDireccion"></small></span>
+                        <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" placeholder="Direccion...">
+                    </div>        
+                </div>
+                 <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="pwd" class="form-control-placeholder">
+                            Contraseña:                          
+                        </label>
+                        <span class="error-msg">minímo de 8 caracteres</span>
+                        <span><small id="spPassword1"></small></span>
+                        <i class="fa fa-eye showpwd" onClick="showPwd('password1', this)"></i>
+                        <input type="password" id="password1" name="password1" class="form-control" placeholder=" " pattern="[A-Za-z0-9]{8,}" required>
+                    </div>  
+                    <div class="col-sm-6">
+                        <label for="pwd" class="form-control-placeholder">
+                            Contraseña:                          
+                        </label>
+                        <span class="error-msg">repita la contraseña</span>
+                        <span><small id="spPassword2"></small></span>
+                        <i class="fa fa-eye showpwd" onClick="showPwd('password2', this)"></i>
+                        <input type="password" id="password2" name="password2" class="form-control" placeholder=" " pattern="[A-Za-z0-9]{8,}" required>
+                    </div>        
+                </div>    
+
+        </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCerrarModalUser">Cancelar</button>
+            <button id="btnIngresarUsuario" type="button" class="btn btn-primary" hidden="true">Agregar</button>
+            <button id="btnModificarUsuario" type="button" class="btn btn-primary" hidden="true">Guardar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!--Contenido HTML del listado de marcas-->
+<div class="content-wrapper">
+   <div class="container-fluid">
+      <section class="content-header">
+         <div class="col-12">
+            <div class="card">
+               <div class="col-sm-12">
+                  <h1 style="color: black" class="m-0">Listado de usuarios</h1>
+                  <button type="button" class="btn btn-primary" id="btnAgregarUsuario">Agregar Usuario</button>
+               </div>
+               <div class="card-body">
+                  <table id="tablaUsuarios" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Rut</th>
+                           <th>Correo</th>
+                           <th>Nombres</th>
+                           <th>Direccion</th>
+                           <th>Tipo Usuario</th>
+                           <th>Acción</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+         <!-- /.col -->
+      </section>
+   </div>
+</div>
+{% endblock %}
+

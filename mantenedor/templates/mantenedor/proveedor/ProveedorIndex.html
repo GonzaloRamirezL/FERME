@@ -1,0 +1,143 @@
+{% extends "../index.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<!-- Modal para agregar nuevo proveedor
+  ESTOS ATRIBUTOS SIRVEN PA QUE EL MODAL NO SE CIERRE SOLO: data-backdrop="static" data-keyboard="false"
+-->
+<div class="modal fade" id="modalProveeedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lbModalProveedor"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmDatosProveedor">
+            <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtRutProveedor">Rut</label>
+                        <span><small id="spRut"></small></span>
+                        <input type="text" class="form-control" id="txtRutProveedor" name="txtRutProveedor" placeholder="Rut proveedor...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtNomProveedor">Nombre Proveedor</label>
+                        <span><small id="spNomProveedor"></small></span>
+                        <input type="text" class="form-control" id="txtNomProveedor" name="txtNomProveedor" placeholder="Nombre...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtNomRepresentante">Representante</label>
+                        <span><small id="spRepresentante"></small></span>
+                        <input type="text" class="form-control" id="txtNomRepresentante"  name="txtNomRepresentante" placeholder="Representante...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtDireccion">Dirección</label>
+                        <span><small id="spDireccion"></small></span>
+                        <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" placeholder="Dirección...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtTelefono">Teléfono</label>
+                        <span><small id="spTelefono"></small></span>
+                        <input type="text" class="form-control" id="txtTelefono"  name="txtTelefono" placeholder="Teléfono...">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtEmail">Email</label>
+                        <span><small id="spEmail"></small></span>
+                        <input type="email" required class="form-control" id="txtEmail" name="txtEmail" placeholder="Email...">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="idRegion">Región:</label>
+                        <span><small id="spRegion"></small></span>
+                        <select class="form-control" id="idRegion" name="idRegion">
+                          <option disabled selected>seleccione una región</option>  
+                          {% for i in region %}
+                          <option value="{{i.0}}">{{i.1}}</option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="idRubro">Rubro:</label>
+                        <span><small id="spRubro"></small></span>
+                        <select class="form-control" id="idRubro" name="idRubro">
+                          <option disabled selected>seleccione un rubro</option> 
+                          {% for i in rubro %}
+                          <option value="{{i.0}}">{{i.1}}</option>
+                          {% endfor %}
+                        </select>   
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="txtComuna">Comuna</label>
+                        <span><small id="spComuna"></small></span>
+                        <select class="form-control" id="idComuna" name="idComuna">
+                            
+                        </select>
+                    </div>
+                    
+                </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnCerrarModalProv">Cancelar</button>
+        <button id="btnAgregarProveedor" type="button" class="btn btn-primary" hidden="true">Agregar</button>
+        <button id="btnModificarProveedor" type="button" class="btn btn-primary" hidden="true">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content-header">
+  
+          <div class="col-12">
+
+            <div class="card">
+              
+              <div class="col-sm-12">
+              <h1 style="color: black" class="m-0">Listado de Proveedores</h1>
+              <button type="button" class="btn btn-primary" id="btnAbrirModalProveedor">Agregar Proveedor</button>
+              </div>
+
+              <div class="card-body">
+
+                <table id="tablaProveedores" class="table table-bordered table-striped">                 
+                  <thead>
+                  <tr>
+                    <th>Rut</th>
+                    <th>Proveedor</th>
+                    <th>Representante</th>
+                    <th>Rubro</th>
+                    <th><strong>Acciones</strong></th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  
+                 </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+</section>
+</div> 
+
+</div>
+{% endblock %}
+

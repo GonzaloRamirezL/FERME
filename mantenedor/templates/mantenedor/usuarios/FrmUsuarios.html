@@ -1,0 +1,168 @@
+{% extends "../index.html" %}
+
+{% block content %}
+
+{% load static %}
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+      <div class="content-header" >
+         <div class="container-fluid">
+            <div class="row mb-2">
+               <div class="col-sm-6">
+                  
+               </div>
+               <!-- /.col -->
+               <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                     <li class="breadcrumb-item"><a href="mantenedores">Inicio</a></li>
+                     <li class="breadcrumb-item active">Agregar usuario</li>
+                  </ol>
+               </div>
+               <!-- /.col -->
+            </div>
+            <!-- /.row -->
+         </div>
+         <!-- /.container-fluid -->
+      </div>
+   </section>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="card mb-3">
+
+            <!------MODAL PROVISORIO ----------------------------------------------------------------------------------------------------------- --> 
+                  <div class="container">
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header" style="background: #4cb454;">
+                            <p style="color: white; font-size: 18px; font-weight: bold;"> ¡ usuario agregado !</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="myModalConfirm" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header" style="background: #F2EFC4;">
+                            <h4 class="modal-title" style="color: black;">ADVERTENCIA!</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body" style="background: ##F2EFC4;">       
+                            <p style="color: black; font-size: 18px; font-weight: bold;">¿Desea agregar el usuario?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#myModal" >Aceptar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            <!--------------------------------------------------------------------------------------------------------------------------------------------> 
+
+
+            <div class="card-body">
+               <form class="needs-validation" novalidate>
+                <div class="card-header" >
+                     <h1 style="color: black" class="m-0">Mantenedor de Usuarios</h1>
+                  </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputFirstname">Nombres</label>
+                        <input type="text" class="form-control" id="inputFirstname" placeholder="Nombres..">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputLastname">Apellidos</label>
+                        <input type="text" class="form-control" id="inputLastname" placeholder="Apellidos..">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputAddressLine1">Dirección</label>
+                        <input type="text" class="form-control" id="inputAddressLine1" placeholder="Dirección..">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputAddressLine2">Número Dirección</label>
+                        <input type="text" class="form-control" id="inputAddressLine2" placeholder="Número..">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputCity">Fecha de nacimiento</label>
+                        <input type="text" class="form-control" id="inputCity" placeholder="Fecha..">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="inputState">Región</label>
+                        <select class="form-control">
+                           <option>Metropolitana</option>
+                           <option>Araucanía</option>
+                           <option>Magallanes</option>
+                           <option>Los Lagos</option>
+                           <option>Los Ríos</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="inputPostalCode">Comuna</label>
+                        <select class="form-control">
+                           <option>San Bernardo</option>
+                           <option>El Bosque</option>
+                           <option>La Pintana</option>
+                           <option>Las Condes</option>
+                           <option>Vitacura</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputContactNumber">Número de teléfono</label>
+                        <input type="number" class="form-control" id="inputContactNumber" placeholder="Teléfono..">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputWebsite">Foto Usuario</label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept="image/*" onchange="loadFile(event)"/>
+                        <div>
+                        <img width="200px" id="output"/>
+                      </div>
+                        <script>
+                           var loadFile = function(event) {
+                             var output = document.getElementById('output');
+                             output.src = URL.createObjectURL(event.target.files[0]);
+                             output.onload = function() {
+                               URL.revokeObjectURL(output.src) // free memory
+                             }
+                           };
+                        </script>
+                     </div>
+                    </div>
+                  </form>
+                </div>
+       
+    
+              
+                  <div class="form-actions">
+                     <table width="100%" border="0">
+                        <tbody>
+                           <tr>
+                              <td width="100%" align="right">
+                                 <button type="button" align="right" name="btGuardar" id="btGuardar" class="btn  btn-success" data-toggle="modal" data-target="#myModalConfirm" onclick="javascript:mpProducto.crear();"><i class="fa fa-floppy-save"></i> Guardar</button>
+                                 <button type="button" align="right" name="btLeer" id="btLeer" class="btn  btn-success" onclick="javascript:mpProducto.leer();"><i class="fa fa-floppy-save"></i> Buscar</button>
+                                 <button type="button" disabled  name="btActualizar" id="btActualizar" align="right" class="btn  btn-success" onclick="javascript:mpProducto.actualizar();"><i class="fa fa-floppy-save"></i> Actualizar</button>
+                                 <button type="button" disabled  name="btEliminar" id="btEliminar" align="right" class="btn btn-danger" onclick="javascript:mpProducto.eliminar();"><i class="fa fa-floppy-save"></i> Eliminar</button>
+                                 <button type="button"   name="btListar" id="btListar" align="right" class="btn btn-info" onclick="javascript:mpProducto.listar();"><i class="fa fa-floppy-save"></i> Listar</button>
+                                 <button align="right" disabled  name="btCancelar" id="btCancelar" class="btn btn-primary" name="commit" value="Cerrar" type="reset" onclick="javascript:mpProducto.cancelar()"><i class="fa fa-ok"> Cancelar</i></button>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

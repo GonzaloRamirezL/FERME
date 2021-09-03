@@ -1,0 +1,33 @@
+<form action="" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="form-group row">
+        <div class="col-sm-6">
+        <label for="idImagen">Id Imagen</label>
+        <input type="number" class="form-control" id="idImagen" name="idImagen" placeholder="id.." />
+	    </div>
+	    <div class="col-sm-6">
+	        <label for="idProducto">Id Producto</label>
+	        <input type="text" class="form-control" id="idProducto" name="idProducto" placeholder="id.." />
+	    </div>
+	    <div class="col-sm-6">
+	        <label for="fotoProd">Foto</label>
+	        <input class="form-control form-control-sm" id="fotoProd" name="fotoProd" type="file" accept="image/*" onchange="loadFile(event)" />
+	    <div>
+	    	<img width="200px" id="output" />
+	    </div>
+	   	<script>
+	        var loadFile = function (event) {
+		        var output = document.getElementById("output");
+		        output.src = URL.createObjectURL(event.target.files[0]);
+		        output.onload = function () {
+		        URL.revokeObjectURL(output.src); // free memory
+	       		};
+	       };
+	    </script>
+		</div>
+	</div>
+	<button type="button" id="frmFoto" value="Guardar"> Guardar</button>
+	<img src="/media/static/img/hgfh.jpg">
+</form>
+<script src="../../static/mantenedores/crudProductos.js"></script>
+<script src="../../static/plugins/jquery/jquery.min.js"></script>

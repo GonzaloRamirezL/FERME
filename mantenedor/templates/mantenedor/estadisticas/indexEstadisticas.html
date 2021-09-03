@@ -1,0 +1,253 @@
+{% extends "../index.html" %}
+
+{% block javascript%}
+<!-- Librería de gráficos-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.js"></script>
+
+{% endblock %}
+{% block content %}
+{% load static %}
+<!-- Page Sidebar Ends-->
+<div class="container-fluid">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-6">
+        <h3>Gráficos</h3>
+      </div>
+      <div class="col-6">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"> <i data-feather="home"></i></a></li>
+          <li class="breadcrumb-item">Estadísticas</li>
+          <li class="breadcrumb-item active">Gráficos</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Gráfico de cantidad de ventas (mes/año)</h5>
+        </div>
+        <div>
+          <div class="card-body">
+            <canvas id="graficaVentaMes" width="200" height="50"></canvas><!-- Gráfico Ventas Mes -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Gráfico de total de ventas por mes</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficaTotalVentas" width="150" height="150"></canvas><!-- Gráfico Ventas Mes -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Gráfico tipo de venta</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficaTipoVenta" width="150" height="150"></canvas><!-- Gráfico Ventas Mes -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Gráfico cantidad de productos vendidos por categoría</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficaCategoria" width="150" height="150"></canvas><!-- Gráfico Ventas Mes -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 box-col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Gráfico cantidad de productos en bodega por categoría</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficaProdCategoria" width="150" height="150"></canvas><!-- Gráfico Ventas Mes -->
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-12">
+      <!-- Estadísticas impresión -->
+      <div class="card">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEstadistica"
+          data-whatever="@mdo">Informe de Estadística</button>
+      </div>
+    </div>
+
+</div>
+</div>
+<div class="modal fade" id="ModalEstadistica" tabindex="1" role="dialog" aria-labelledby="ModalEstadistica"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg center" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <section class="content">
+              <div class="container-fluid">
+                <div class="">
+                  <div class="card-body" id="divGrafica1">
+                    <!-- info row -->
+
+                    <!-- Estadísticas impresión -->
+                    <h2>
+                      <i class="fa fa-globe"></i> DETALLES DE ESTADÍSTICAS
+                    </h2>
+
+                    <div class="row invoice-info">
+                      <div class="col-sm-4 invoice-col">
+                        <address>
+                          <strong>Ferme S.A</strong><br>
+                          San Bernardo 8172<br>
+                          Santiago Región Metropolitana<br>
+                          Teléfono: +569 81290121<br>
+                          Email: consultas@ferme.cl
+                        </address>
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-sm-4 invoice-col" id="DatosProveedor">
+
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                    <br><br>
+                    <h4>Informe</h4>
+                    <br>
+                    <h6>Cantidad de ventas: {{count_venta}}</h6>
+                    <h6>Cantidad de clientes registrados: {{count_clientes}}</h6>
+                    <h6>Sumatoria de ventas en el mes: {{venta_mes}}</h6>
+                    <h6>Sumatoria de ventas en el año: {{ventas_anno}}</h6>
+                    <br>
+                    <h6>Tabla de ventas por categoría</h6>
+
+                    <table class="table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Categoría &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+                          <th>Ventas</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for filas in categoria_list %}
+                        <tr>
+                          <td>{{ filas.0 }}</td>
+                          <td>{{ filas.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+                    <br>
+                    <h6>Tabla de ventas por documento</h6>
+                    <table class="table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Documento &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+                          <th>Ventas</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for filas in documento_list %}
+                        <tr>
+                          <td>{{ filas.0 }}</td>
+                          <td>{{ filas.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+                    <br>
+                    <h6>Tabla de ventas por mes</h6>
+                    <table class=" table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>N° del Mes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+                          <th>Suma de Ventas</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for filas in ventas_sum_list %}
+                        <tr>
+                          <td>{{ filas.0 }}</td>
+                          <td>{{ filas.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+                    <br>
+                    <h6>Tabla de ventas por mes</h6>
+                    <table class=" table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>N° del Mes &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+                          <th>Cantidad de Ventas</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for filas in ventas_count_list %}
+                        <tr>
+                          <td>{{ filas.0 }}</td>
+                          <td>{{ filas.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+                    <br>
+                    <h6>Tabla de producto en bodega</h6>
+                    <table class=" table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Categoría &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</th>
+                          <th>Cantidad</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for filas in productos_count_list %}
+                        <tr>
+                          <td>{{ filas.0 }}</td>
+                          <td>{{ filas.1 }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+
+                    <br>
+                    <button class='btn btn-success' onclick="clickPdfGrafico()"> imprimir </button>
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block jquery%}
+
+<script src="../../static/mantenedores/estadisticas.js"></script>
+
+
+
+{% endblock %}

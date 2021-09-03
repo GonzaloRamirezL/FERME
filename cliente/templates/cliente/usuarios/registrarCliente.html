@@ -1,0 +1,173 @@
+{% extends 'cliente/indexCliente.html' %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="containerRight">
+<div id="breadcrumb" class="section">
+		
+		
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div id="breadcrumb" class="section">
+		<section class="content">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<form id="frmClientes">
+						<div class="col-md-6">
+	
+						<!-- Billing Details -->
+						
+							<div class="form-group">
+								<label for="txtRut">
+										<span></span>
+										Rut (11111111-1)
+								</label>
+								<span><small id="spRutCLiente"></small></span>
+								<input class="input" type="text" id="txtRut" name="txtRut" placeholder="Rut cliente" maxlength="10" oninput="checkRut(this)">
+							</div>
+							<div class="form-group">
+								<label for="txtApellidoPat">
+										<span></span>
+										Apellido paterno
+								</label>
+
+								<span><small id="spPaterno"></small></span>
+								<input class="input" type="text" id="txtApellidoPat" name="txtApellidoPat" placeholder="Nombres">
+							</div>
+							<div class="form-group">
+								<label for="txtTelefono">
+										<span></span>
+										Teléfono (9 dígitos)
+									</label>
+								<span><small id="spTelefono"></small></span>
+								<input class="input" type="text" id="txtTelefono" name="txtTelefono" maxlength="9" placeholder="Nombres">
+							</div>
+							<div class="form-group">
+								<label for="txtEmailUser">
+										<span></span>
+										Correo
+								</label>
+								<span><small id="spCorreo1"></small></span>
+								<input class="input" type="email" id="txtEmailUser" name="txtEmailUser" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="txtEmailUser2">
+										<span></span>
+										Repita Correo
+									</label>
+								<span><small id="spCorreo2"></small></span>
+								<input class="input" type="email" id="txtEmailUser2" name="txtEmailUser2" placeholder="repita Email">
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="txtPasswordUser">
+										<span></span>
+										Ingrese una contraseña (minímo 8 caracteres)
+									</label>
+									<span><small id="spPassword1"></small></span>
+									<input class="input" type="password" id="txtPasswordUser" name="txtPasswordUser" placeholder="Ingrese una contraseña">
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="txtPasswordUser2">
+										<span></span>
+										Repita contraseña
+									</label>
+									<span><small id="spPassword2"></small></span>
+									<input class="input" type="password" id="txtPasswordUser2" name="txtPasswordUser2" placeholder="repita contraseña">
+								</div>	
+							</div>
+
+						
+					</div>
+					<div class="col-md-6">
+							<div class="form-group">
+								<label for="txtNombres">
+										<span></span>
+										Nombres
+								</label>
+								<span><small id="spNombres"></small></span>
+								<input class="input" type="text" id="txtNombres" name="txtNombres" placeholder="Nombres">
+							</div>
+							<div class="form-group">
+								<label for="txtApellidoMat">
+										<span></span>
+										Apellido Materno
+									</label>
+								<span><small id="spMaterno"></small></span>
+								<input class="input" type="text" id="txtApellidoMat" name="txtApellidoMat" placeholder="Apellidos">
+							</div>
+							<div class="form-group">
+								<label for="txtEmpresa">
+										<span></span>
+										Nombre Empresa (opcional)
+									</label>
+								<input class="input" type="text" id="txtEmpresa" name="txtEmpresa" placeholder="Nombres">
+							</div>
+							<div class="form-group">
+								<label for="txtFecha">
+										<span></span>
+										Fecha de nacimiento
+									</label>
+								<span><small id="spFecha"></small></span>
+								<input class="input" type="date" id="txtFecha" name="txtFecha" placeholder="fecha">
+							</div>
+							<div class="form-group">
+								<label for="idRegion">
+										<span></span>
+										Región
+									</label>
+								<span><small id="spRegion"></small></span>
+								<select class="input" id="idRegion" name="idRegion">
+		                          <option disabled selected>seleccione una región</option>  
+		                          {% for i in region %}
+		                          <option value="{{i.0}}">{{i.1}}</option>
+		                          {% endfor %}
+		                        </select>
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="idComuna">
+										<span></span>
+										Comuna
+									</label>
+									<span><small id="spComuna"></small></span>
+			                        <select class="input" id="idComuna" name="idComuna">           
+			                        </select>
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="caption">
+									<label for="txtDireccion">
+										<span></span>
+										Dirección
+									</label>
+									<span><small id="spDireccion"></small></span>
+									<input class="input" type="text" id="txtDireccion" name="txtDireccion" placeholder="direccion">
+								</div>	
+							</div>
+							<div class="form-group">
+								<div class="poduct-btns">
+									
+                      				<a class="primary-btn cta-btn" style="cursor: pointer;" type="button" id="btnRegistros">Registrarte!</a>
+                   			 </div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+
+	
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</section>
+		</div>
+		<!-- /SECTION -->
+</div>
+{% endblock %}

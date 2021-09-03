@@ -1,0 +1,249 @@
+{% extends "../index.html" %}
+
+{% block content %}
+{% load static %}
+
+<!--MODAL PARA GENERAR UNA ORDEN DE PEDIDO-->
+ <div class="modal fade" id="modalGenerarPedido" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Generar orden de pedido</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="FrmPedido" name="FrmPedido">
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="rutProveedor">Rut Proveedor</label>
+                            <input type="text" class="form-control" id="rutProveedor" name="rutProveedor" placeholder="Rut.." />
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="obsPedido">Observaciones</label>
+                            <textarea class="form-control" name="obsPedido" id="obsPedido" rows="3"></textarea>
+                        </div>
+
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="btnAgregarPedido" type="button" class="btn btn-primary">Guardar orden</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL PARA AGREGAR PRODUCTOS A UN PEDIDO ESPECÍFICO-->
+ <div class="modal fade" id="modalAgregarProductos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar producto a pedido</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="FrmPedidoProductos" name="FrmPedidoProductos">
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="numPedido">Número De Pedido</label>
+                            <input type="number" class="form-control" id="numPedido" name="numPedido" placeholder="Número.." readonly="true" />
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="codProductoss">Código de producto</label>
+                            <input type="text" class="form-control" id="codProductoss" name="codProductoss" placeholder="Código.." readonly="true" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                          <label for="codProducto">Cantidad</label>
+                          <span><small id="spCantidadProducto"></small></span>
+                            <input type="number" class="form-control" id="cantProducto" name="cantProducto" placeholder="Cantidad.."/>
+                        </div>
+                        <div class="col-sm-6">
+                        <label for="codProducto">Productos Proveedor</label>
+                        <span><small id="spProductoProveedor"></small></span>
+                        <select class="form-control" id="codProducto" name="codProducto">
+                            <option disabled  selected="True">Seleccionar Producto</option>
+                          </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cerrarModalPedido">Cancelar</button>
+                <button id="btnAgregarProdPedido" type="button" class="btn btn-primary">Guardar orden</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--MODAL DETALLE ORDEN DE COMPRA-->
+ <div class="modal fade" id="ModalOrdenCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="content">
+      <div class="container-fluid">
+         <div class="card mb-3">
+            <div class="card-body">
+               <form class="needs-validation" novalidate>
+                  <div class="form-row">
+                     <!-- title row -->
+ 
+                     <!-- /.col -->
+                  </div>
+                  <!-- info row -->
+                  
+                  <div class="row invoice-info">
+                        <h2 >
+                           <i class="fa fa-globe"></i> DETALLES DE ORDEN DE COMPRA
+                        </h2>
+                     <div class="col-sm-4 invoice-col" id="info">
+                        <address>
+                           <strong>Ferme S.A</strong><br>
+                           San Bernardo 8172<br>
+                           Santiago Región Metropolitana<br>
+                           Teléfono: +569 81290121<br>
+                           Email: consultas@ferme.cl
+                        </address>
+                     </div>
+                     <!-- /.col -->
+                     <div class="col-sm-4 invoice-col" id="DatosProveedor">
+                     </div>
+                     <!-- /.col -->
+                     <div class="col-sm-4 invoice-col">
+                        <b>Folio #007612</b><br>
+                        <br>
+                        <b>Orden ID:</b> 4F3S8J<br>
+                        <b>Pagado:</b> 2/22/2021<br>
+                        <b>Cuenta:</b> 968-34567
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  
+                  <!-- /.row -->
+                  <!-- Table row -->
+                  <div class="form-column" id="info3">
+                  <div class="row">
+                     <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped" id="tablaPedidos">
+                           <thead>
+                              <tr>
+                                 <th>Cantidad</th>
+                                 <th>Producto</th>
+                                 <th>Código</th>
+                                 <th>Total</th>
+                                 <th>accion</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+    
+                           </tbody>
+                        </table>
+                     </div>
+                 </div>
+                </div>
+                  <div class="form-column" id="info2">
+                     <div class="row" >
+              
+                        <div class="table-responsive">
+                           <table class="table" id="tablaDetalleCompra">
+                              <thead>
+                              <tr>
+                                 <th>SubTotal</th>
+                                 <th>Iva</th>
+                                 <th>Total (iva inc)</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+    
+                           </tbody>
+                              
+                           </table>
+                        </div>
+                     </div>
+                     <!-- /.col -->
+                  </div>
+                  
+                  <!-- /.row -->
+                  <!-- this row will not appear when printing -->
+                  <div class="col text-center">
+                     <div class="col-xs-12">
+                        <button onclick="clickPdf()"><a>Imprimir</a></button>
+                        <button type="button" id="btnCompletarPago" class="btn btn-success pull-right" hidden="true"><i class="fa fa-credit-card"></i> EMITIR ORDEN DE COMPRA
+                        </button>
+                        <button type="button" class="btn btn-danger" id="btnAnularOrden" hidden="true" style="margin-right: 5px;">
+                        <i class="fa fa-globe"></i> ANULAR ORDEN DE COMPRA
+                        </button>
+                     </div>
+                  </div>
+              </form>
+              </div>
+            </div>
+         </div>
+        </section>
+      </div>
+   
+            </div>
+           
+        </div>
+    </div>
+
+
+<div id="elementH">holaaa</div>
+ <div class="content-wrapper">
+  <div class="container-fluid">
+    <section class="content-header">
+  
+          <div class="col-12">
+            <div class="card">
+
+
+              <div class="col-sm-12">
+              <h1 style="color: black" class="m-0">Listado de pedidos</h1>
+              <button type="button" class="btn btn-primary" id="btnAbrirModalPedido22">Realizar orden de pedido</button>
+              </div>
+              <div class="card-body">
+                <table id="tablaListaPedidos" class="table table-bordered table-striped">
+                  
+                  <thead>
+                  <tr>
+                    <th>Nro pedido</th>
+                    <th>Fecha de pedido</th>
+                    <th>Estado</th>
+                    <th>Rut Proveedor</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+
+                </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          </section>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+
+{% endblock %}
+

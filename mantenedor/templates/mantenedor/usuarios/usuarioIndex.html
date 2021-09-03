@@ -1,0 +1,145 @@
+{% extends "../index.html" %}
+
+{% block content %}
+  <div class="content-wrapper" style="background: white">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 style="color: black" class="m-0"> </h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="mantenedores"></a></li>
+                <li class="breadcrumb-item active"></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+
+
+              <!------MODAL PROVISORIO ----------------------------------------------------------------------------------------------------------- --> 
+                  <div class="container">
+                    <div class="modal fade" id="myModal" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header" style="background: #4cb454;">
+                            <p style="color: white; font-size: 18px; font-weight: bold;"> ¡ Usuario eliminado !</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal fade" id="myModalConfirm" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header" style="background: Red;">
+                            <h4 class="modal-title" style="color: white;">ADVERTENCIA!</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body" style="background: #f44434;">       
+                            <p style="color: white; font-size: 18px; font-weight: bold;">¿Desea eliminar este usuario?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModal" >Aceptar</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            <!--------------------------------------------------------------------------------------------------------------------------------------------> 
+
+              <div class="col-sm-12">
+                <h1 style="color: black" class="m-0">Listado de usuarios</h1>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  
+                  <thead>
+                  <tr>
+                    <th>ID marca</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo de usuario</th>
+                    <th>Acción</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  <tr>
+                    <td>181712712</td>
+                    <td>Jaime
+                    </td>
+                    <td>Huenchul</td>
+                    <td>Vendedor</td>
+                    <td><a class="btn btn-success" href="usuarioFrm">Editar</a> 
+                      <!--<a class="btn btn-warning" href="#">Editar</a>-->
+                      <a data-toggle="modal" data-target="#myModalConfirm" class="btn btn-danger" href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>67712612</td>
+                    <td>Gonzalo
+                    </td>
+                    <td>Ramirez</td>
+                    <td>Proveedor</td>
+                    <td><a class="btn btn-success" href="usuarioFrm">Editar</a> 
+                      <!--<a class="btn btn-warning" href="#">Editar</a>-->
+                      <a data-toggle="modal" data-target="#myModalConfirm" class="btn btn-danger" href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>76261251</td>
+                    <td>Carla
+                    </td>
+                    <td>Palominos</td>
+                    <td>Cliente</td>
+                    <td><a class="btn btn-success" href="usuarioFrm">Editar</a> 
+                      <!--<a class="btn btn-warning" href="#">Editar</a>-->
+                      <a data-toggle="modal" data-target="#myModalConfirm" class="btn btn-danger" href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>120981271</td>
+                    <td>Julian
+                    </td>
+                    <td>Amigo</td>
+                    <td>Administrador</td>
+                    <td><a class="btn btn-success" href="usuarioFrm">Editar</a> 
+                      <!--<a class="btn btn-warning" href="#">Editar</a>-->
+                      <a data-toggle="modal" data-target="#myModalConfirm" class="btn btn-danger" href="#">Eliminar</a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "webEmpleado/indexEmpleado.html" %}
+
+
+{% block content %}
+{% load static %}
+<!--MODAL DETALLE ORDEN DE COMPRA-->
+   
+
+ <div class="modal fade" id="ModalDetalleVentaCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <section class="content">
+               <div class="container-fluid">
+                  <div class="card mb-3">
+                     <div class="card-body">
+                        <form class="needs-validation" novalidate>
+                           <div class="form-row">
+                              <!-- title row -->
+                              <div class="col-xs-12">
+                                 <h2 class="page-header">
+                                    <i class="fa fa-globe"></i> DETALLES DE COMPRA
+                                 </h2>
+                              </div>
+                              <!-- /.col -->
+                           </div>
+                           <!-- info row -->
+                           <div class="row invoice-info">
+                              <div class="col-sm-4 invoice-col">
+                                 De
+                                 <address>
+                                    <strong>Ferme S.A</strong><br>
+                                    San Bernardo 8172<br>
+                                    Santiago Región Metropolitana<br>
+                                    Teléfono: +569 81290121<br>
+                                    Email: consultas@ferme.cl
+                                 </address>
+                              </div>
+                              <!-- /.col -->
+                              <div class="col-sm-4 invoice-col" id="DatosProveedor">
+                                 
+                              </div>
+                           </div>
+                           <!-- /.row -->
+                           <!-- Table row -->
+                           <div class="row">
+                              <div class="col-xs-12 table-responsive">
+                                 <table class="table table-striped" id="tablaDetalleVenta">
+                                    <thead>
+                                       <tr>
+                                          <th>Producto</th>
+                                          <th>Cantidad</th>
+                                          <th>SubTotal</th>
+                                          <th>Total</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+             
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <!-- /.col -->
+                           </div>
+
+                           <div class="col text-center">
+                              <div class="col-xs-12">
+                                 <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
+                                 <button type="button" class="btn btn-danger" id="btnAnularVenta" style="margin-right: 5px;">
+                                 <i class="fa fa-globe"></i> ANULAR ORDEN DE COMPRA
+                                 </button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<!--Contenido HTML del listado de marcas-->
+<div class="content-wrapper">
+   <section class="content-header">
+      <div class="content-header">
+         <div class="container-fluid">
+            <div class="row mb-2">
+               <!-- /.col -->
+               <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                     <li class="breadcrumb-item"><a href="/empleadosPrincipal">Inicio</a></li>
+                     <li class="breadcrumb-item active">Ingreso venta</li>
+                  </ol>
+               </div>
+               <!-- /.col -->
+            </div>
+            <!-- /.row -->
+         </div>
+         <!-- /.container-fluid -->
+      </div>
+   </section>
+   <div class="container-fluid">
+      <section class="content-header">
+         <div class="col-12">
+            <div class="card">
+               <div class="col-sm-12">
+                  <h1 style="color: black" class="m-0">Listado de ventas</h1>
+               </div>
+               <div class="card-body">
+                  <table id="tablaVentas" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Nro Venta</th>
+                           <th>Fecha</th>
+                           <th>SubTotal</th>
+                           <th>Total</th>
+                           <th>Acciones</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+         <!-- /.col -->
+      </section>
+   </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,126 @@
+{% extends "../index.html" %}
+
+{% block content %}
+
+{% load static %}
+<div class="content-wrapper">
+   <!-- Content Header (Page header) -->
+   <section class="content-header">
+      <div class="content-header" >
+         <div class="container-fluid">
+            <div class="row mb-2">
+               <div class="col-sm-6">
+                  
+               </div>
+               <!-- /.col -->
+               <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                     <li class="breadcrumb-item"><a href="mantenedores">Inicio</a></li>
+                     <li class="breadcrumb-item active">Agregar producto</li>
+                  </ol>
+               </div>
+               <!-- /.col -->
+            </div>
+            <!-- /.row -->
+         </div>
+         <!-- /.container-fluid -->
+      </div>
+   </section>
+   <section class="content">
+      <div class="container-fluid">
+         <div class="card mb-3">
+
+
+            <div class="card-body">
+               <form class="needs-validation" novalidate>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputFirstname">Código</label>
+                        <input type="text" class="form-control" id="inputCodigo" disabled placeholder="Código..">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputLastname">Proveedor</label>
+                        <select class="form-control" id="idproveedor">
+                           <option disabled selected="True">Seleccionar proveedor</option>
+                           <option>...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputAddressLine1">Nombre Producto</label>
+                        <input type="text" class="form-control" id="inputNomProduct" placeholder="Nombre Producto..">
+                    </div>
+                    <div class="col-sm-6">
+                     <label for="inputAddressLine1">Marca</label>
+                     <input type="text" class="form-control" id="inputMarca" placeholder="Marca..">
+                     </div>
+               </div>
+               <div class="form-group row">
+                    <div class="form-group col-md-6">
+                     <label for="txtMens">Descripcion del producto</label>
+                     <textarea class="form-control" name=" txtMensaje" id="txtMens" rows="3"></textarea>
+                 </div>
+                 <div class="col-sm-3">
+                  <label for="inputState">Categoria</label>
+                  <select class="form-control" id="idCat">
+                     <option disabled  selected="True">Seleccionar categoria</option>
+                     {% for i in categoria %}
+                     <option value="{{i.0}}">{{i.1}}</option>
+                     {% endfor %}
+                  </select>
+              </div>
+              <div class="col-sm-3">
+                  <label for="inputPostalCode">Subcategoria</label>
+                  <select class="form-control" id="idSubcat">
+                    
+                  </select>
+              </div>
+               </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputCity">Fecha de vencimiento</label>
+                        <input type="date" class="form-control" id="inputVencimiento" >
+                    </div>
+                    <div class="col-sm-3">
+                     <label for="inputAddressLine1">Stock</label>
+                     <input type="number" class="form-control" id="inputStock" placeholder="Stock..">
+                 </div>
+                 <div class="col-sm-3">
+                  <label for="inputAddressLine1">Stock critico</label>
+                  <input type="number" class="form-control" id="inputStockcritico" placeholder="Stock critico..">
+              </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label for="inputContactNumber">Valor producto</label>
+                        <input type="number" class="form-control" id="inputValorProducto" placeholder="Valor..">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="inputWebsite">Foto Producto</label>
+                        <input class="form-control form-control-sm" id="formFileProducto" type="file" accept="image/*" onchange="loadFile(event)"/>
+                        <div>
+                        <img width="200px" id="output"/>
+                      </div>
+                        <script>
+                           var loadFile = function(event) {
+                             var output = document.getElementById('output');
+                             output.src = URL.createObjectURL(event.target.files[0]);
+                             output.onload = function() {
+                               URL.revokeObjectURL(output.src) // free memory
+                             }
+                           };
+                        </script>
+                     </div>
+                    </div>
+                  </form>
+                </div>
+       
+    
+           </div>
+         </div>
+      </section>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <table id="tblTitulo1" class="table1" width="100%">
+                      <tr>
+                        <td>
+                          <h2><b>&nbsp;&nbsp;Modelo</b></h2></td>
+                      </tr>
+                    </table>
+					<div class="container_table box-title table-responsive" style="width: 100%">
+					  <form class="form-horizontal well" id="forms-registro">
+						  <div class="form-group">
+   							  <label class="col-sm-3 control-label" for="input01">Id Modelo</label>
+   							  <div class="col-sm-3">
+   								  <input notnull="" title="Run" type="number" class="input-large required " id="txtIdModelo" name="txtIdModelo" maxlength="10" value="{{regModelo.modelo_id}}">
+   							  </div>
+   						  </div>
+						  <div class="form-group">
+							  <label class="col-sm-3 control-label" for="input01">Descripcion</label>
+							  <div class="col-sm-3">
+								  <input notnull="" disabled title="Nombres" type="text" class="input-large required " id="txtDescripcion" name="txtDescripcion" maxlength="100" value="{{regModelo.descripcion}}">
+							  </div>
+						  </div>
+             <div class="form-group">
+                <label class="col-sm-3 control-label" for="input01">Marca</label>
+                <div class="col-sm-3">
+                <select notnull="" disabled title="Imagen" 
+                            type="text" class="input-large required " 
+                            id="cbMarca" name="cbMarca" 
+                            onchange="mpMarca.loadCombo(document.getElementById('cbMarca').value)" 
+                            style="width: 400px">
+                       <option value="{{regModelo.marca_id}}">{{regModelo.marca.nombre}}</option>
+                       {% for mar in regMarca %}
+                             <option value="{{mar.marca_id}}">{{mar.nombre}}</option>
+                       {% endfor %}
+                  </select>
+                </div>
+             </div> 
+             <div class="form-group">
+                <label class="col-sm-3 control-label" for="input01">Año</label>
+                <div class="col-sm-3">
+                  <input notnull="" title="Nombres" type="text" disabled class="input-large required " id="txtAnno" name="txtAnno"   maxlength="100" value="{{regModelo.fabricacion}}">
+                </div>
+              </div>        
+						  </<form class="" action="index.html" method="post">
+
+						  </form>
+            </form>
+					  </div>
+
+<!-- **************************************************************************-->
+			<div class="form-actions">
+        <table width="100%" border="0"><tbody><tr><td width="100%" align="right">
+  <button type="button" disabled align="right" name="btGuardar" id="btGuardar" class="btn  btn-success" onclick="javascript:mpModelo.crear();"><i class="fa fa-floppy-save"></i> Guardar</button>
+  <button type="button" align="right" name="btLeer" id="btLeer" class="btn  btn-success" onclick="javascript:mpModelo.leer();"><i class="fa fa-floppy-save"></i> Leer</button>
+  <button type="button" disabled  name="btActualizar" id="btActualizar" align="right" class="btn  btn-success" onclick="javascript:mpModelo.actualizar();"><i class="fa fa-floppy-save"></i> Actualizar</button>
+  <button type="button" disabled  name="btEliminar" id="btEliminar" align="right" class="btn  btn-success" onclick="javascript:mpModelo.eliminar();"><i class="fa fa-floppy-save"></i> Eliminar</button>
+  <button type="button"   name="btListar" id="btListar" align="right" class="btn  btn-success" onclick="javascript:mpModelo.listar();"><i class="fa fa-floppy-save"></i> Listar</button>
+  <button align="right" disabled  name="btCancelar" id="btCancelar" class="btn btn-primary" name="commit" value="Cerrar" type="reset" onclick="javascript:mpModelo.cancelar()"><i class="fa fa-ok"> Cancelar</i></button>
+        </td></tr></tbody></table>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</section>

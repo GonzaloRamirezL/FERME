@@ -1,0 +1,117 @@
+ <section class="content">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="box">
+              <div class="box-header">
+                  <table id="tblTitulo1" class="table1" width="100%"> 
+  
+                    <tr>
+                      <td>
+                        <h2><b>&nbsp;&nbsp;Productos</b></h2></td>
+                    </tr>
+
+
+                    <main role="main">
+    {# Cargamos la librería #}
+    {% load bootstrap4 %}
+ 
+    {# Archivos #}
+    {% load static %}
+    <div class="container_table box-title table-responsive" style="width: 100%">
+    <form class="form-horizontal well" id="forms-registro">
+
+        <div class="container text-center mt-5">
+
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Lista de productos</h5>              
+            </div>
+          </div>
+
+            <div class="col-md-10">
+
+              <div >
+
+                {% if messages %}
+                <ul class="messages list-group mb-3">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <div align="left" class="btn_crear mb-3">
+                  <a href="crearRegion" type="button" class="btn btn-primary">Crear</a>
+                </div>
+
+                <table id="tblData" class="table table-responsive table-striped table-bordered tablehead table-hover table-condensed dataTable no-footer" role="grid" aria-describedby="tblData_info">
+                  <thead class="colhead" role="row">
+                    <tr>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th>Marca</th>
+                      <th>Modelo</th>
+                      <th>Categoria</th>
+                      <th>Precio</th>
+                      <th>Stock</th>
+                      <th>Imagen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for Producto in object_list %}
+                    <tr>
+                      <td>{{ Producto.codigo }}</td>
+                      <td>{{ Producto.nombre }}</td>
+                      <td>{{ Producto.marca }}</td>
+                      <td>{{ Producto.modelo }}</td>
+                      <td>{{ Producto.categoria }}</td>
+                      <td>{{ Producto.precio }}</td>
+                      <td>{{ Producto.stock }}</td>
+                      <td><img src="{{Producto.imagen}}" class="img-fluid" width="50%"></td>
+                      <td>
+                        
+                        <form method="POST" action="{{Producto.codigo}}">
+                          
+                          {% csrf_token %}
+                          
+                          <div class="btn-group">
+                            <a href="detalle/{{Producto.codigo}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                            <a href="editar/{{postre.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                            <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                              Eliminar
+                            </button>
+                            <a href="javascript:ventana.showHTML('containerRight','region')" title="Eliminar"><i class="fas fa-trash"></i> </a>                       
+                          </div>
+
+                        </form>
+
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+    </main>
+
+      {# JS y jQuery Bootstrap #}
+      {% bootstrap_javascript jquery='full' %} 
+
+      <script type="text/javascript">
+        function eliminar() {
+          var x = confirm("Eliminar Producto ?");
+          if (x)
+            return true;
+          else
+            return false;
+        }
+      </script>
+
+                  </table>
+              </div> 
+          </div>
+      </div>
+  </div>                 
+			
+<!-- **************************************************************************-->
+</section>
+  

@@ -1,0 +1,28 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+
+		<div class="cart-list">
+			{% for filas in regCarro %}
+			<div class="product-widget">
+				<div class="product-img">
+					<img src="/media/static/{{filas.5}}" alt="">
+				</div>
+				
+				<div class="product-body">
+					<h3 class="product-name"><a href="#"></a>{{filas.3}}</h3>
+					<h4 class="product-price"><span class="qty">x{{filas.1}}</span>${{filas.4}}</h4>
+				</div>			
+				<button class="delete"><i class="fa fa-close" onclick="javascript:usuarioSesion.eliminar('{{filas.0}}','{{filas.2}}');"></i></button>				
+			</div>
+			{% endfor %}
+		</div>
+
+  </div>
+</div>
+</div>
+</div>
+</section>

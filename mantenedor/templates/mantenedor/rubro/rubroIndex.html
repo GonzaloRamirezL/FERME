@@ -1,0 +1,61 @@
+{% extends "../index.html" %}
+{% block content %}
+{% load static %}
+<!-- Modal para agregar nueva marca-->
+<div class="modal fade" id="modalRubros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="labelModalRubro"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form id="frmRubros">
+               <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Nombre Rubro:</label>
+                  <span><small id="spNomRubro"></small></span>
+                  <input type="text" class="form-control" id="txtNomRubro"  name="nomRubro">
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="btnCerrarModalRubro">Cancelar</button>
+            <button id="btnAgregarRubro" type="button" class="btn btn-primary" hidden="true">Agregar</button>
+            <button id="btnModificarRubro" type="button" class="btn btn-primary" hidden="true">Guardar</button>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="content-wrapper">
+   <div class="container-fluid">
+      <section class="content-header">
+         <div class="col-12">
+            <div class="card">
+               <div class="col-sm-12">
+                  <h1 style="color: black" class="m-0">Listado de rubros</h1>
+                  <button type="button" class="btn btn-primary" id="btnAbrirModalRubro">Agregar Rubro</button>
+               </div>
+               <div class="card-body">
+                  <table id="tablaRubros" class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>Id rubro</th>
+                           <th>Rubro</th>
+                           <th>Acciones</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         </div>
+         <!-- /.col -->
+      </section>
+   </div>
+</div>
+{% endblock %}
